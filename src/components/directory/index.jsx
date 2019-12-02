@@ -1,8 +1,11 @@
-import styled from 'styled-components'
+import React from 'react'
+import Styled from './styled'
+import Menuitem from '../menuitem'
 
-export default styled.div`
-	width: 100%;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-`
+export default ({ history, match, sessions }) => (
+	<Styled>
+		{sessions.map(({ id, ...otherprops }) => (
+				<Menuitem key={id} {...otherprops} history={history} match={match}/>
+			))}
+	</Styled>
+)

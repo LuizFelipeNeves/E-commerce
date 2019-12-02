@@ -1,16 +1,11 @@
 import React from 'react'
 import Homecontainer from '../../components/homecontainer'
 import Directory from '../../components/directory'
-import Menuitem from '../../components/menuitem'
 import Sessions from './data'
 
-const Home = () => (
+const Home = ({history, match}) => (
 	<Homecontainer>
-		<Directory>
-			{Sessions.map(({ id, title, size, imageUrl }) => (
-				<Menuitem key={id} title={title} size={size} imageUrl={imageUrl} />
-			))}
-		</Directory>
+		<Directory history={history} match={match} sessions={Sessions}/>
 	</Homecontainer>
 )
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Switch, Route, Link } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 
 import './App.css'
 
@@ -13,7 +13,8 @@ const App = () => {
 			<Header/>
 			<Switch>
 				<Route exact path="/" component={Home} />
-				<Route path="/shop" component={Shop} />
+				<Route exact path="/shop" component={Shop} />
+				<Route path="/shop/:categoryName" component={Shop} />
 			</Switch>
 		</div>
 	)

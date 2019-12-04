@@ -1,13 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import ShopData from './data'
 import PreviewColletion from '../../components/preview-colletion'
 
-export default () => {
-	const [colletions, setcolletions] = useState([])
-
-	useEffect(() => {
-		setcolletions(ShopData)
-	}, [])
+export default (props) => {
+	const category = props.match.params.categoryName
+	const colletions = category ? ShopData.filter(e => e.routeName === category): ShopData
 
 	return (
 		<div>

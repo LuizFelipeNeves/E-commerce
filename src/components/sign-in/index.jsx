@@ -4,16 +4,23 @@ import * as Styled from './styled'
 import FormInput from '../form-input'
 import CustomButton from '../custom-button'
 
-import { signInWithGoogle } from '../../firebase/firebase.utils'
-
-const handleSubmit = (event) => {
-	event.preventDefault()
-	alert('Sign in')
-}
+import { auth, signInWithGoogle } from '../../firebase/firebase.utils'
 
 export default () => {
 	const [email, setemail] = useState('')
 	const [password, setpassword] = useState('')
+
+	const handleSubmit = async (event) => {
+		event.preventDefault()
+		
+		try {
+			await auth.signInWithEmailAndPassword(email, password)
+			setemail('')
+			setpassword('')
+		} catch (error) {
+			console.log(error)
+		}
+	}
 	return (
 		<Styled.Container>
 			<h2>I already have an account</h2>

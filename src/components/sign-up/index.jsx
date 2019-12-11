@@ -25,7 +25,8 @@ export default () => {
 			setpassword('')
 			setconfirmpassword('')
 		} catch (error) {
-			console.error(error)
+			// TODO minlength
+			alert(error.message)
 		}
 	}
 

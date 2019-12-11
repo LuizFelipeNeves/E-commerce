@@ -32,7 +32,7 @@ export default () => {
 					type="email"
 					handleChange={(e) => setemail(e.target.value)}
 					value={email}
-					label="email"
+					label="Email"
 					required
 				/>
 				<FormInput
@@ -40,7 +40,7 @@ export default () => {
 					type="password"
 					value={password}
 					handleChange={(e) => setpassword(e.target.value)}
-					label="password"
+					label="Password"
 					required
 				/>
 				<Styled.Buttons>

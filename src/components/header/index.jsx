@@ -8,6 +8,7 @@ import { connect } from 'react-redux'
 
 import { auth } from '../../firebase/firebase.utils'
 import CartIcon from '../cart-icon'
+import CardDropdown from '../cart-dropdown'
 
 const mapStateToProps = (state) => ({
 	currentUser: state.user.currentUser
@@ -37,6 +38,7 @@ export default connect(mapStateToProps)(({ currentUser }) => (
 				</Link>
 			)}
 			<CartIcon count={5}/>
+			<CardDropdown/>
 		</Styled.Options>
 	</Styled.Container>
 ))

@@ -36,7 +36,7 @@ export default connect(mapStateToProps)(({ currentUser }) => (
 					SIGN IN
 				</Link>
 			)}
-			<CartIcon count='5'/>
+			<CartIcon count={5}/>
 		</Styled.Options>
 	</Styled.Container>
 ))

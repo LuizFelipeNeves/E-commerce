@@ -11,16 +11,15 @@ import Header from './components/header'
 import { auth, createUserProfileDocument } from './firebase/firebase.utils'
 import { setCurrentUser } from './redux/user/actions'
 
-const mapStateToProps = ({ user }) => ({
-	currentUser: user.currentUser
+const mapStateToProps = ({ user: { currentUser } }) => ({
+	currentUser
 })
 
 const mapDispatchToProps = (dispatch) => ({
 	setCurrentUser: (user) => dispatch(setCurrentUser(user))
 })
 
-const App = (props) => {
-	const { setCurrentUser, currentUser } = props
+const App = ({ setCurrentUser, currentUser }) => {
 
 	auth.onAuthStateChanged(async (userAuth) => {
 		if (userAuth) {

@@ -10,7 +10,7 @@ const useReducer = (state = initialState, action) => {
 
         }
     }
-    return actionstype[action] || state
+    return actionstype[action.type] || state
 }
 
 export default useReducer

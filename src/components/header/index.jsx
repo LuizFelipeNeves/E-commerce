@@ -7,6 +7,7 @@ import { ReactComponent as Logo } from '../../assets/logo.svg'
 import { connect } from 'react-redux'
 
 import { auth } from '../../firebase/firebase.utils'
+import CartIcon from '../cart-icon'
 
 const mapStateToProps = (state) => ({
 	currentUser: state.user.currentUser
@@ -35,6 +36,7 @@ export default connect(mapStateToProps)(({ currentUser }) => (
 					SIGN IN
 				</Link>
 			)}
+			<CartIcon count='5'/>
 		</Styled.Options>
 	</Styled.Container>
 ))

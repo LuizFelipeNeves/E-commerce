@@ -4,9 +4,15 @@ import * as Styled from './styled'
 
 import { ReactComponent as Logo } from '../../assets/logo.svg'
 
+import { connect } from 'react-redux'
+
 import { auth } from '../../firebase/firebase.utils'
 
-export default ({ currentUser }) => (
+const mapStateToProps = (state) => ({
+	currentUser: state.user.currentUser
+})
+
+export default connect(mapStateToProps)(({ currentUser }) => (
 	<Styled.Container>
 		<Link to="/">
 			<Styled.Logo>
@@ -31,4 +37,4 @@ export default ({ currentUser }) => (
 			)}
 		</Styled.Options>
 	</Styled.Container>
-)
+))

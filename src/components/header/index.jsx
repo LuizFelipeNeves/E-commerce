@@ -10,11 +10,12 @@ import { auth } from '../../firebase/firebase.utils'
 import CartIcon from '../cart-icon'
 import CardDropdown from '../cart-dropdown'
 
-const mapStateToProps = (state) => ({
-	currentUser: state.user.currentUser
+const mapStateToProps = ({ user: { currentUser }, cart: { hidden } }) => ({
+	currentUser,
+	hidden
 })
 
-export default connect(mapStateToProps)(({ currentUser }) => (
+export default connect(mapStateToProps)(({ currentUser, hidden }) => (
 	<Styled.Container>
 		<Link to="/">
 			<Styled.Logo>
@@ -37,8 +38,8 @@ export default connect(mapStateToProps)(({ currentUser }) => (
 					SIGN IN
 				</Link>
 			)}
-			<CartIcon count={5}/>
-			<CardDropdown/>
+			<CartIcon count={5} />
+			{!hidden ? <CardDropdown /> : null}
 		</Styled.Options>
 	</Styled.Container>
 ))

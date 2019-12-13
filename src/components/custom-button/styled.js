@@ -15,6 +15,8 @@ export default styled.button`
 	font-weight: bolder;
 	border: none;
 	cursor: pointer;
+	display: flex;
+	justify-content: center;
 
 	&:hover {
 		background-color: white;
@@ -28,6 +30,18 @@ export default styled.button`
 
 		&:hover {
 			background-color: #357ae8;
+			border: none;
+		}
+	}
+
+	&.inverted {
+		background-color: white;
+		color: black;
+		border: 1px solid black;
+
+		&:hover {
+			background-color: black;
+			color: white;
 			border: none;
 		}
 	}

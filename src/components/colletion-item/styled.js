@@ -6,6 +6,22 @@ const Container = styled.div`
 	flex-direction: column;
 	height: 350px;
 	align-items: center;
+	position: relative;
+
+	button {
+		width: 80%;
+		opacity: 0.7;
+		position: absolute;
+		top: 255px;
+		display: none;
+	}
+
+	&:hover {
+		button {
+			opacity: 0.85;
+			display: flex;
+		}
+	}
 `
 
 const Image = styled.h1`
@@ -14,6 +30,11 @@ const Image = styled.h1`
 	background-size: cover;
 	background-position: center;
 	margin-bottom: 5px;
+
+	&:hover {
+		opacity: 0.8;
+	}
+
 	${(props) =>
 		props.imageUrl &&
 		css`

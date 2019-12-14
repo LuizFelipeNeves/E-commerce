@@ -24,17 +24,17 @@ const Container = styled.div`
 	}
 `
 
-const Image = styled.h1`
+const Image = styled.img`
 	width: 100%;
 	height: 95%;
-	background-size: cover;
-	background-position: center;
 	margin-bottom: 5px;
 
 	&:hover {
 		opacity: 0.8;
 	}
 
+	background-size: cover;
+	background-position: center;
 	${(props) =>
 		props.imageUrl &&
 		css`

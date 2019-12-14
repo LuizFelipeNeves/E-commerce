@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "homepage": "https://luizfelipeneves.github.io/E-commerce",
+  "start_url": ".",
   "dependencies": {
     "firebase": "^7.5.2",
     "gh-pages": "^2.1.1",

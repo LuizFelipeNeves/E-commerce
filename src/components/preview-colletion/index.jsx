@@ -3,13 +3,15 @@ import * as Styled from './styled'
 
 import ColletionItem from '../colletion-item'
 
-export default ({ title, items }) => (
+export default ({ id, title, items }) => (
 	<Styled.Container>
 		<Styled.Title>{title.toUpperCase()}</Styled.Title>
 		<Styled.Preview>
 			{items
 				.filter((item, idx) => idx < 4)
-				.map(({id, ...otherprops}) => <ColletionItem key={id} {...otherprops}/>)}
+				.map((item) => (
+					<ColletionItem key={item.id} item={item} />
+				))}
 		</Styled.Preview>
 	</Styled.Container>
 )

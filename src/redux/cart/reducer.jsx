@@ -1,5 +1,6 @@
 const initialState = {
-    hidden: true
+    hidden: true,
+    cartItems: []
 }
 
 const useReducer = (state = initialState, action) => {
@@ -8,6 +9,10 @@ const useReducer = (state = initialState, action) => {
             ...state,
             hidden: !state.hidden
 
+        },
+        'ADD_ITEM': {
+            ...state,
+            cartItems: [...state.cartItems, action.payload]
         }
     }
     return actionstype[action.type] || state

@@ -4,9 +4,10 @@ import { connect } from 'react-redux'
 import * as Styled from './styled'
 import CustomButton from '../../components/custom-button'
 import CartItem from '../../components/cart-item'
+import { selectCartItems } from '../../redux/cart/selectors'
 
-const mapStateToProps = ({ cart: { cartItems } }) => ({
-	cartItems
+const mapStateToProps = (state) => ({
+	cartItems: selectCartItems(state)
 })
 
 export default connect(mapStateToProps)(({ cartItems }) => (

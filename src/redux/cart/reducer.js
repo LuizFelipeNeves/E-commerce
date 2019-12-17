@@ -1,4 +1,4 @@
-import { addItemToCart, removeItemFromCart } from './utils'
+import { addItemToCart, removeItemFromCart, clearItemFromCart } from './utils'
 
 const initialState = {
 	hidden: true,
@@ -18,6 +18,10 @@ const useReducer = (state = initialState, action) => {
 		REMOVE_ITEM: {
 			...state,
 			cartItems: removeItemFromCart(state.cartItems, action.payload)
+		},
+		CLEAR_ITEM: {
+			...state,
+			cartItems: clearItemFromCart(state.cartItems, action.payload)
 		}
 	}
 	return actionstype[action.type] || state

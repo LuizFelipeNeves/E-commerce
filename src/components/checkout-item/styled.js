@@ -16,7 +16,14 @@ const Container = styled.div`
 	}
 
 	.quantity {
-		padding-left: 20px;
+		display: flex;
+
+		.arrow {
+			cursor: pointer;
+		}
+		.value {
+			margin: 0px 10px;
+		}
 	}
 
 	.remove-button {

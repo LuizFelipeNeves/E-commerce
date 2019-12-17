@@ -16,7 +16,7 @@ const Colletion = ({ item, addItem }) => {
 			<Styled.Image imageUrl={imageUrl} />
 			<Styled.Footer>
 				<span className="name">{name}</span>
-				<span className="price">{price}</span>
+				<span className="price">${price}</span>
 			</Styled.Footer>
 			<CustomButton inverted onClick={() => addItem(item)}>
 				Add to Cart

@@ -13,8 +13,13 @@ const Container = styled.div`
 	right: 40px;
 	z-index: 5;
 
-	button {
+	.button-checkout {
 		margin-top: auto;
+	}
+
+	.empyty-message {
+		font-size: 18px;
+		margin: 50px auto;
 	}
 `
 

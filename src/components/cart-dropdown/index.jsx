@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { createStructuredSelector } from 'reselect';
+import { createStructuredSelector } from 'reselect'
 
 import * as Styled from './styled'
 import CustomButton from '../../components/custom-button'
@@ -14,10 +14,14 @@ const mapStateToProps = createStructuredSelector({
 export default connect(mapStateToProps)(({ cartItems }) => (
 	<Styled.Container>
 		<Styled.Items>
-			{cartItems.map((cartItem) => (
-				<CartItem key={cartItem.id} item={cartItem} />
-			))}
+			{cartItems.length ? (
+				cartItems.map((cartItem) => (
+					<CartItem key={cartItem.id} item={cartItem} />
+				))
+			) : (
+				<span className="empyty-message">Your cart is empyty</span>
+			)}
 		</Styled.Items>
-		<CustomButton>GO TO CHECKOUT</CustomButton>
+		<CustomButton className="button-checkout">GO TO CHECKOUT</CustomButton>
 	</Styled.Container>
 ))

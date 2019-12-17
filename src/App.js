@@ -1,6 +1,7 @@
 import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { createStructuredSelector } from 'reselect'
 
 import './App.css'
 
@@ -10,9 +11,10 @@ import SignInAndSignup from './pages/sign-in-and-signup'
 import Header from './components/header'
 import { auth, createUserProfileDocument } from './firebase/firebase.utils'
 import { setCurrentUser } from './redux/user/actions'
+import { selectCurrentUser } from './redux/user/selectors'
 
-const mapStateToProps = ({ user: { currentUser } }) => ({
-	currentUser
+const mapStateToProps = createStructuredSelector({
+	currentUser: selectCurrentUser
 })
 
 const mapDispatchToProps = (dispatch) => ({
@@ -20,7 +22,6 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 const App = ({ setCurrentUser, currentUser }) => {
-
 	auth.onAuthStateChanged(async (userAuth) => {
 		if (userAuth) {
 			const userRef = await createUserProfileDocument(userAuth)
@@ -41,7 +42,9 @@ const App = ({ setCurrentUser, currentUser }) => {
 				<Route
 					exact
 					path="/signin"
-					render={() => (currentUser ? <Redirect to="/" /> : <SignInAndSignup />)}
+					render={() =>
+						currentUser ? <Redirect to="/" /> : <SignInAndSignup />
+					}
 				/>
 			</Switch>
 		</div>

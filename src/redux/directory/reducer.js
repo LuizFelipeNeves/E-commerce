@@ -41,21 +41,7 @@ const initialState = {
 }
 
 const useReducer = (state = initialState, action) => {
-	const actionstype = {
-		/*
-		ADD_ITEM: {
-			...state,
-			cartItems: addItemToCart(state.cartItems, action.payload)
-		},
-		REMOVE_ITEM: {
-			...state,
-			cartItems: removeItemFromCart(state.cartItems, action.payload)
-		},
-		CLEAR_ITEM: {
-			...state,
-			cartItems: clearItemFromCart(state.cartItems, action.payload)
-		}*/
-	}
+	const actionstype = {}
 	return actionstype[action.type] || state
 }
 

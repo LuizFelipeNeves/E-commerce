@@ -1,5 +1,6 @@
 import React from 'react'
 import ShopData from './data'
+
 import PreviewColletion from '../../components/preview-colletion'
 
 export default (props) => {

@@ -1,17 +1,18 @@
 import React from 'react'
-import ShopData from './data'
+import { connect } from 'react-redux'
+import { createStructuredSelector } from 'reselect'
+import {  selectColletions } from '../../redux/shop/selectors'
 
 import PreviewColletion from '../../components/preview-colletion'
 
-export default (props) => {
-	const category = props.match.params.categoryName
-	const colletions = category ? ShopData.filter(e => e.routeName === category): ShopData
+const mapStateToProps = createStructuredSelector({
+	colletions:  selectColletions
+})
 
-	return (
-		<div>
-			{colletions.map(({id, ...otherprops}) => (
-				<PreviewColletion  key={id} {...otherprops}/>
-			))}
-		</div>
-	)
-}
+export default connect(mapStateToProps)(({ colletions }) => (
+	<div>
+		{colletions.map(({ id, ...otherprops }) => (
+			<PreviewColletion key={id} {...otherprops} />
+		))}
+	</div>
+))

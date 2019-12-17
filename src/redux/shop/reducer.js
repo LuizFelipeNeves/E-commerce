@@ -1,7 +1,7 @@
 import SHOP_DATA from './data'
 
 const initialState = {
-	colletions: SHOP_DATA
+	collections: SHOP_DATA
 }
 
 const useReducer = (state = initialState, action) => {

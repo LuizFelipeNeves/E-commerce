@@ -1,8 +1,12 @@
 import React from 'react'
 import * as Styled from './styled'
+import { withRouter } from 'react-router-dom'
 
-export default ({ title, size, imageUrl, history, linkUrl, match }) => (
-	<Styled.Container className={`${size ? size : ''}`} onClick={() => history.push(`${match.url}${linkUrl}`)}>
+const MenuItem = ({ title, imageUrl, size, history, linkUrl, match }) => (
+	<Styled.Container
+		className={`${size ? size : ''}`}
+		onClick={() => history.push(`${match.url}${linkUrl}`)}
+	>
 		<Styled.BackgroundImage imageUrl={imageUrl} />
 		<Styled.Content>
 			<Styled.Title>{title.toUpperCase()}</Styled.Title>
@@ -10,3 +14,5 @@ export default ({ title, size, imageUrl, history, linkUrl, match }) => (
 		</Styled.Content>
 	</Styled.Container>
 )
+
+export default withRouter(MenuItem)

@@ -30,9 +30,6 @@ export default connect(mapStateToProps)(({ currentUser, hidden }) => (
 			<Link to="/shop" className="option">
 				SHOP
 			</Link>
-			<Link to="/contact" className="option">
-				CONTACT
-			</Link>
 			{currentUser ? (
 				<div className="option" onClick={() => auth.signOut()}>
 					SIGN OUT

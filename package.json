@@ -2,7 +2,7 @@
   "name": "e-commerce",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://luizfelipeneves.github.io/E-commerce",
+  "homepage": ".",
   "start_url": ".",
   "dependencies": {
     "firebase": "^7.5.2",

@@ -63,4 +63,5 @@ typings/
 # build
 build
 
+# Local Netlify folder
 .netlify

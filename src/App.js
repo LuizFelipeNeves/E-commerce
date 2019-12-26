@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useCallback } from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 
@@ -18,20 +18,22 @@ import { selectCurrentUser } from './redux/user/selectors'
 
 export default () => {
 	const dispatch = useDispatch()
-	const setCurrentUser = (user) => dispatch(setCurrentUserAction(user))
-
-	auth.onAuthStateChanged(async (userAuth) => {
-		if (userAuth) {
-			const userRef = await createUserProfileDocument(userAuth)
-			userRef.onSnapshot((snapShot) => {
-				setCurrentUser({ id: snapShot.id, ...snapShot.data() })
-				// bug flood
-			})
-		}
-		setCurrentUser(userAuth)
-	})
-
 	const currentUser = useSelector(selectCurrentUser)
+	const setCurrentUser = useCallback(
+		(user) => dispatch(setCurrentUserAction(user)),
+		[dispatch]
+	)
+
+	useEffect(() => {
+		auth.onAuthStateChanged(async (userAuth) => {
+			if (userAuth) {
+				const userRef = await createUserProfileDocument(userAuth)
+				userRef.onSnapshot((snapShot) => {
+					setCurrentUser({ id: snapShot.id, ...snapShot.data() })
+				})
+			} else setCurrentUser(userAuth)
+		})
+	}, [setCurrentUser])
 
 	return (
 		<div>

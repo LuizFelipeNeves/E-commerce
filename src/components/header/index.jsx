@@ -29,7 +29,7 @@ export default () => {
 					SHOP
 				</OptionsLink>
 				{currentUser ? (
-					<OptionsLink as='div' onClick={() => auth.signOut()}>
+					<OptionsLink as='div' to='#' onClick={() => auth.signOut()}>
 						SIGN OUT
 					</OptionsLink>
 				) : (

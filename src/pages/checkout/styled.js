@@ -32,4 +32,11 @@ const Total = styled.div`
 	font-size: 36px;
 `
 
-export { Container, Header, Total }
+const TestWarning = styled.div`
+	text-align: center;
+	margin-top: 40px;
+	font-size: 24px;
+	color: red;
+`
+
+export { Container, Header, Total, TestWarning }

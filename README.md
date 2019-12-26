@@ -2,8 +2,8 @@
 This project has been created in course [Complete React Developer in 2020 (w/ Redux, Hooks, GraphQL)](https://www.udemy.com/course/complete-react-developer-zero-to-mastery/) with [Create React App](https://github.com/facebook/create-react-app).
 
 <p align="center">
-  <a href="https://luizfelipeneves.github.io/E-commerce/">
-      <img src="./others/screen.png" alt="E-commerce" width="600px"/>
+  <a href="https://e-commerceluiz.netlify.com/">
+      <img src="./public/preview.png" alt="E-commerce" width="600px"/>
   </a>
 </p>
 

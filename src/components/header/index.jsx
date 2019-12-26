@@ -21,7 +21,7 @@ const mapStateToProps = createStructuredSelector({
 
 export default connect(mapStateToProps)(({ currentUser, hidden }) => (
 	<Styled.Container>
-		<Link to="/">
+		<Link to="/" aria-label='Logo'>
 			<Styled.Logo>
 				<Logo />
 			</Styled.Logo>

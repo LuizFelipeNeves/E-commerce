@@ -7,22 +7,25 @@ const Container = styled.div`
 	flex-direction: column;
 	align-items: center;
 	margin: 50px auto 0;
+	button {
+		margin-left: auto;
+		margin-top: 50px;
+	}
 `
 
-const Header = styled.div`
+const HeaderContainer = styled.div`
 	width: 100%;
-	padding: 10px 0;
+	height: 40px;
 	display: flex;
 	justify-content: space-between;
 	border-bottom: 1px solid darkgrey;
+`
 
-	.header-block {
-		text-transform: capitalize;
-		width: 23%;
-
-		&:last-child {
-			width: 8%;
-		}
+const HeaderBlockContainer = styled.div`
+	text-transform: capitalize;
+	width: 23%;
+	&:last-child {
+		width: 8%;
 	}
 `
 
@@ -32,11 +35,11 @@ const Total = styled.div`
 	font-size: 36px;
 `
 
-const TestWarning = styled.div`
+const Warning = styled.div`
 	text-align: center;
 	margin-top: 40px;
 	font-size: 24px;
 	color: red;
 `
 
-export { Container, Header, Total, TestWarning }
+export { Container, HeaderContainer, HeaderBlockContainer, Total, Warning }

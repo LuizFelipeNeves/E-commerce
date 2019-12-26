@@ -1,16 +1,16 @@
 import React from 'react'
-import * as Styled from './styled'
+import { Container, Image, Details } from './styled'
 
 const CartItem = ({ item: { imageUrl, price, name, quantity } }) => (
-	<Styled.Container>
-		<Styled.Image src={imageUrl} alt="item" />
-		<Styled.Details>
-			<span className="name">{name}</span>
-			<span className="price">
+	<Container>
+		<Image src={imageUrl} alt="item" />
+		<Details>
+			<span>{name}</span>
+			<span>
 				{quantity} x ${price}
 			</span>
-		</Styled.Details>
-	</Styled.Container>
+		</Details>
+	</Container>
 )
 
 export default CartItem

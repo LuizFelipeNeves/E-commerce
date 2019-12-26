@@ -1,17 +1,20 @@
 import React from 'react'
-import * as Styled from './styled'
+import { withRouter } from 'react-router-dom'
+import { Container, Title, Preview } from './styled'
 
 import ColletionItem from '../colletion-item'
 
-export default ({ id, title, items }) => (
-	<Styled.Container>
-		<Styled.Title>{title.toUpperCase()}</Styled.Title>
-		<Styled.Preview>
+export default withRouter(({ title, items, history, match, routeName }) => (
+	<Container>
+		<Title onClick={() => history.push(`${match.path}/${routeName}`)}>
+			{title.toUpperCase()}
+		</Title>
+		<Preview>
 			{items
 				.filter((item, idx) => idx < 4)
 				.map((item) => (
 					<ColletionItem key={item.id} item={item} />
 				))}
-		</Styled.Preview>
-	</Styled.Container>
-)
+		</Preview>
+	</Container>
+))

@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 const Container = styled.div`
 	height: 70px;
@@ -8,23 +9,22 @@ const Container = styled.div`
 	margin-bottom: 25px;
 `
 
-const Logo = styled.div`
+const LogoLink = styled(Link)`
 	height: 100%;
 	width: 70px;
 	padding: 25px;
 `
 
-const Options = styled.div`
+const OptionsContainer = styled.div`
 	width: 50%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-
-	.option {
-		padding: 10px 15px;
-		cursor: pointer;
-	}
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+`
+const OptionsLink = styled(Link)`
+	padding: 10px 15px;
+	cursor: pointer;
 `
 
-export { Container, Logo, Options }
+export { Container, LogoLink, OptionsContainer, OptionsLink }

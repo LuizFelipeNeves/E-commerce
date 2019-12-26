@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { ReactComponent as ShoppingIconSVG } from '../../assets/shopping-bag.svg'
 
 const Container = styled.div`
 	width: 45px;
@@ -10,6 +11,11 @@ const Container = styled.div`
 	cursor: pointer;
 `
 
+const ShoppingIcon = styled(ShoppingIconSVG)`
+	width: 24px;
+	height: 24px;
+`
+
 const Count = styled.span`
 	position: absolute;
 	font-size: 10px;
@@ -17,4 +23,4 @@ const Count = styled.span`
 	bottom: 12px;
 `
 
-export { Container, Count }
+export { Container, Count, ShoppingIcon }

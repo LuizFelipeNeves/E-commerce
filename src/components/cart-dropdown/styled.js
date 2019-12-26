@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import CustomButton from '../../components/custom-button'
 
 const Container = styled.div`
 	position: absolute;
@@ -12,15 +13,15 @@ const Container = styled.div`
 	top: 90px;
 	right: 40px;
 	z-index: 5;
+`
 
-	.button-checkout {
-		margin-top: auto;
-	}
+const ButtonCheckout = styled(CustomButton)`
+	margin-top: auto;
+`
 
-	.empyty-message {
-		font-size: 18px;
-		margin: 50px auto;
-	}
+const EmptyMessage = styled.span`
+	font-size: 18px;
+	margin: 50px auto;
 `
 
 const Items = styled.li`
@@ -30,4 +31,4 @@ const Items = styled.li`
 	overflow: scroll;
 `
 
-export { Container, Items }
+export { Container, ButtonCheckout, EmptyMessage, Items }

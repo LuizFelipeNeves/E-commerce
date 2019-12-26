@@ -1,16 +1,16 @@
 import React from 'react'
 
-import * as Styled from './styled'
+import { GroupContainer, FormInputContainer, FormInputLabel } from './styled'
 
 const FormInput = ({ handleChange, label, ...otherProps }) => (
-	<Styled.Container>
-		<Styled.Input onChange={handleChange} {...otherProps} />
+	<GroupContainer>
+		<FormInputContainer onChange={handleChange} {...otherProps} />
 		{label ? (
-			<Styled.Label className={`${otherProps.value.length ? 'shrink' : ''}`}>
+			<FormInputLabel className={`${otherProps.value.length ? 'shrink' : ''}`}>
 				{label}
-			</Styled.Label>
+			</FormInputLabel>
 		) : null}
-	</Styled.Container>
+	</GroupContainer>
 )
 
 export default FormInput

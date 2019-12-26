@@ -1,38 +1,39 @@
 import React from 'react'
-import * as Styled from './styled'
-import { connect } from 'react-redux'
-import { addItem, removeItem, clearItem } from '../../redux/cart/actions'
+import {
+	Container,
+	ImageContainer,
+	TextContainer,
+	QuantityContainer,
+	RemoveButtonContainer
+} from './styled'
+import { useDispatch } from 'react-redux'
+import { addItemAction, removeItemAction, clearItemAction } from '../../redux/cart/actions'
 
-const mapDispatchToProps = (dispatch) => ({
-	addItem: (item) => dispatch(addItem(item)),
-	removeItem: (item) => dispatch(removeItem(item)),
-	clearItem: (item) => dispatch(clearItem(item))
-})
 
-const CheckoutItem = ({ cartItem, addItem, removeItem, clearItem }) => {
+export default ({ cartItem }) => {
 	const { name, imageUrl, price, quantity } = cartItem
-	return (
-		<Styled.Container>
-			<Styled.ImageContainer>
-				<Styled.Image alt="item" src={imageUrl}></Styled.Image>
-			</Styled.ImageContainer>
 
-			<span className="name">{name}</span>
-			<span className="quantity">
-				<div className="arrow" onClick={() => removeItem(cartItem)}>
-					&#10094;
-				</div>
-				<span className="value">{quantity}</span>
-				<div className="arrow" onClick={() => addItem(cartItem)}>
-					&#10095;
-				</div>
-			</span>
-			<span className="price">{price}</span>
-			<div className="remove-button" onClick={() => clearItem(cartItem)}>
+	const dispatch = useDispatch()
+	const addItem = (item) => dispatch(addItemAction(item))
+	const removeItem = (item) => dispatch(removeItemAction(item))
+	const clearItem =  (item) => dispatch(clearItemAction(item))
+
+	return (
+		<Container>
+			<ImageContainer>
+				<img alt="item" src={imageUrl}></img>
+			</ImageContainer>
+
+			<TextContainer>{name}</TextContainer>
+			<QuantityContainer>
+				<div onClick={() => removeItem(cartItem)}>&#10094;</div>
+				<span>{quantity}</span>
+				<div onClick={() => addItem(cartItem)}>&#10095;</div>
+			</QuantityContainer>
+			<TextContainer>{price}</TextContainer>
+			<RemoveButtonContainer onClick={() => clearItem(cartItem)}>
 				&#10005;
-			</div>
-		</Styled.Container>
+			</RemoveButtonContainer>
+		</Container>
 	)
 }
-
-export default connect(null, mapDispatchToProps)(CheckoutItem)

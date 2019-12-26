@@ -1,8 +1,9 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 const Container = styled.div`
+	height: ${({ size }) => (size ? '380px' : '240px')};
 	min-width: 30%;
-	height: 240px;
+	overflow: hidden;
 	flex: 1 1 auto;
 	display: flex;
 	align-items: center;
@@ -10,9 +11,15 @@ const Container = styled.div`
 	border: 1px solid black;
 	margin: 0 7.5px 15px;
 	overflow: hidden;
-
-	&.large {
-		height: 380px;
+	&:hover {
+		cursor: pointer;
+		& .background-image {
+			transform: scale(1.1);
+			transition: transform 6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+		}
+		& .content {
+			opacity: 0.9;
+		}
 	}
 
 	&:first-child {
@@ -35,16 +42,11 @@ const Content = styled.div`
 	background-color: white;
 	opacity: 0.7;
 	position: absolute;
-
-	&:hover {
-		cursor: pointer;
-		opacity: 0.9;
-	}
 `
 
 const Title = styled.h1`
 	font-weight: bold;
-	margin: 0 6px 0;
+	margin-bottom: 6px;
 	font-size: 22px;
 	color: #4a4a4a;
 `
@@ -59,18 +61,7 @@ const BackgroundImage = styled.div`
 	height: 100%;
 	background-size: cover;
 	background-position: center;
-
-	${(props) =>
-		props.imageUrl &&
-		css`
-			background-image: url(${props.imageUrl});
-		`}
-
-	&:hover {
-		cursor: pointer;
-		transform: scale(1.1);
-		transition: transform 6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
-	}
+	background-image: ${({ imageUrl }) => `url(${imageUrl})`};
 `
 
 export { Container, Content, Title, Subtitle, BackgroundImage }

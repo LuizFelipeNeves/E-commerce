@@ -1,18 +1,15 @@
 import React from 'react'
-import * as Styled from './styled'
+import { Container, BackgroundImage, Content, Title, Subtitle } from './styled'
 import { withRouter } from 'react-router-dom'
 
 const MenuItem = ({ title, imageUrl, size, history, linkUrl, match }) => (
-	<Styled.Container
-		className={`${size ? size : ''}`}
-		onClick={() => history.push(`${match.url}${linkUrl}`)}
-	>
-		<Styled.BackgroundImage imageUrl={imageUrl} />
-		<Styled.Content>
-			<Styled.Title>{title.toUpperCase()}</Styled.Title>
-			<Styled.Subtitle>SHOP NOW</Styled.Subtitle>
-		</Styled.Content>
-	</Styled.Container>
+	<Container size={size} onClick={() => history.push(`${match.url}${linkUrl}`)}>
+		<BackgroundImage imageUrl={imageUrl} />
+		<Content>
+			<Title>{title.toUpperCase()}</Title>
+			<Subtitle>SHOP NOW</Subtitle>
+		</Content>
+	</Container>
 )
 
 export default withRouter(MenuItem)

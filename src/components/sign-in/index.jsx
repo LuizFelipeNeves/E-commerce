@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import * as Styled from './styled'
+import { Container, Buttons }from './styled'
 
 import FormInput from '../form-input'
 import CustomButton from '../custom-button'
@@ -22,7 +22,7 @@ export default () => {
 		}
 	}
 	return (
-		<Styled.Container>
+		<Container>
 			<h2>I already have an account</h2>
 			<span>Sign in with your email and password</span>
 
@@ -43,13 +43,13 @@ export default () => {
 					label="Password"
 					required
 				/>
-				<Styled.Buttons>
+				<Buttons>
 					<CustomButton type="submit">Sign in</CustomButton>
 					<CustomButton onClick={signInWithGoogle} isGoogleSignIn>
 						Sign in with Google
 					</CustomButton>
-				</Styled.Buttons>
+				</Buttons>
 			</form>
-		</Styled.Container>
+		</Container>
 	)
 }

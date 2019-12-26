@@ -1,27 +1,25 @@
 import React from 'react'
-import * as Styled from './styled'
-import { connect } from 'react-redux'
+import { Container, Title, ItemsContainer } from './styled'
+import { useSelector } from 'react-redux'
 
 import CollectionItem from '../../components/colletion-item'
 
 import { selectCollection } from '../../redux/shop/selectors'
 
-const CollectionPage = ({ collection }) => {
-	const { title, items } = collection
+const CollectionPage = ({ match }) => {
+	const { title, items } = useSelector((state) =>
+		selectCollection(match.params.collectionId)(state)
+	)
 	return (
-		<Styled.Container>
-			<h2 className="title">{title}</h2>
-			<div className="items">
+		<Container>
+			<Title>{title}</Title>
+			<ItemsContainer>
 				{items.map((item) => (
 					<CollectionItem key={item.id} item={item} />
 				))}
-			</div>
-		</Styled.Container>
+			</ItemsContainer>
+		</Container>
 	)
 }
 
-const mapStateToProps = (state, ownProps) => ({
-	collection: selectCollection(ownProps.match.params.collectionId)(state)
-})
-
-export default connect(mapStateToProps)(CollectionPage)
+export default CollectionPage

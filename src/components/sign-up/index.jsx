@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import * as Styled from './styled'
+import { Container } from './styled'
 
 import FormInput from '../form-input'
 import CustomButton from '../custom-button'
@@ -31,7 +31,7 @@ export default () => {
 	}
 
 	return (
-		<Styled.Container>
+		<Container>
 			<h2>I do not have a account</h2>
 			<span>Sign up with your email and password</span>
 
@@ -70,6 +70,6 @@ export default () => {
 				/>
 				<CustomButton type="submit">SIGN UP</CustomButton>
 			</form>
-		</Styled.Container>
+		</Container>
 	)
 }

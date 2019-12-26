@@ -1,28 +1,25 @@
 import React from 'react'
-import * as Styled from './styled'
-import CustomButton from '../custom-button'
+import { Container, AddButton, Image, Footer, Name, Price } from './styled'
 
-import { connect } from 'react-redux'
-import { addItem } from '../../redux/cart/actions'
+import { useDispatch } from 'react-redux'
+import { addItemAction } from '../../redux/cart/actions'
 
-const mapDispatchToProps = (dispatch) => ({
-	addItem: (item) => dispatch(addItem(item))
-})
-
-const Colletion = ({ item, addItem }) => {
-	const { id, name, price, imageUrl } = item
+const Colletion = ({ item }) => {
+	const { name, price, imageUrl } = item
+	const dispatch = useDispatch()
+	const addItem = (item) => dispatch(addItemAction(item))
 	return (
-		<Styled.Container key={id}>
-			<Styled.Image imageUrl={imageUrl} />
-			<Styled.Footer>
-				<span className="name">{name}</span>
-				<span className="price">${price}</span>
-			</Styled.Footer>
-			<CustomButton inverted onClick={() => addItem(item)}>
+		<Container>
+			<Image imageUrl={imageUrl} />
+			<Footer>
+				<Name>{name}</Name>
+				<Price>${price}</Price>
+			</Footer>
+			<AddButton inverted onClick={() => addItem(item)}>
 				Add to Cart
-			</CustomButton>
-		</Styled.Container>
+			</AddButton>
+		</Container>
 	)
 }
 
-export default connect(null, mapDispatchToProps)(Colletion)
+export default Colletion

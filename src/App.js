@@ -11,12 +11,10 @@ import Checkout from './pages/checkout'
 
 import Header from './components/header'
 
-import { auth, createUserProfileDocument, addColletionAndDocuments } from './firebase/firebase.utils'
+import { auth, createUserProfileDocument } from './firebase/firebase.utils'
 
 import { setCurrentUserAction } from './redux/user/actions'
 import { selectCurrentUser } from './redux/user/selectors'
-import { selectCollectionsForPreview } from './redux/shop/selectors'
-
 export default () => {
 	const dispatch = useDispatch()
 	const currentUser = useSelector(selectCurrentUser)
@@ -24,8 +22,6 @@ export default () => {
 		(user) => dispatch(setCurrentUserAction(user)),
 		[dispatch]
 	)
-
-	const collectionsArray = useSelector(selectCollectionsForPreview)
 
 	useEffect(() => {
 		auth.onAuthStateChanged(async (userAuth) => {
@@ -36,10 +32,7 @@ export default () => {
 				})
 			} else setCurrentUser(userAuth)
 		})
-		addColletionAndDocuments('collections', collectionsArray.map(({ title, items }) => ({
-			 title, items
-		})))
-	}, [setCurrentUser, collectionsArray])
+	}, [setCurrentUser])
 
 	return (
 		<div>

@@ -5,7 +5,12 @@ const initialState = {
 }
 
 const useReducer = (state = initialState, action) => {
-	const actionstype = {}
+	const actionstype = {
+		UPDATE_COLLECTIONS: {
+			...state,
+			collections: action.payload
+		}
+	}
 	return actionstype[action.type] || state
 }
 

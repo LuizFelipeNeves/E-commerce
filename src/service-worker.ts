@@ -1,5 +1,8 @@
 /// <reference lib="webworker" />
 /* eslint-disable no-restricted-globals */
+/* eslint no-underscore-dangle: 0 */
+/* eslint prefer-regex-literals: 0 */
+/* eslint prefer-template: 0 */
 
 // This service worker can be customized!
 // See https://developers.google.com/web/tools/workbox/modules

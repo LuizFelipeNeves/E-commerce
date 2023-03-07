@@ -1,54 +1,40 @@
-import React, { useEffect, useCallback } from 'react'
-import { Switch, Route, Redirect } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux'
+import { useEffect, lazy, Suspense } from 'react';
+import { useDispatch } from 'react-redux';
 
-import './App.css'
+import { Routes, Route } from 'react-router-dom';
 
-import Home from './pages/home'
-import Shop from './pages/shop'
-import SignInAndSignup from './pages/sign-in-and-signup'
-import Checkout from './pages/checkout'
+import Spinner from './components/spinner/spinner.component';
+import { checkUserSession } from './store/user/user.action';
 
-import Header from './components/header'
+const Navigation = lazy(() =>
+  import('./routes/navigation/navigation.component')
+);
+const Shop = lazy(() => import('./routes/shop/shop.component'));
+const Checkout = lazy(() => import('./routes/checkout/checkout.component'));
+const Home = lazy(() => import('./routes/home/home.component'));
+const Authentication = lazy(() =>
+  import('./routes/authentication/authentication.component')
+);
 
-import { auth, createUserProfileDocument } from './firebase/firebase.utils'
+const App = () => {
+  const dispatch = useDispatch();
 
-import { setCurrentUserAction } from './redux/user/actions'
-import { selectCurrentUser } from './redux/user/selectors'
-export default () => {
-	const dispatch = useDispatch()
-	const currentUser = useSelector(selectCurrentUser)
-	const setCurrentUser = useCallback(
-		(user) => dispatch(setCurrentUserAction(user)),
-		[dispatch]
-	)
+  useEffect(() => {
+    dispatch(checkUserSession());
+  }, []);
 
-	useEffect(() => {
-		auth.onAuthStateChanged(async (userAuth) => {
-			if (userAuth) {
-				const userRef = await createUserProfileDocument(userAuth)
-				userRef.onSnapshot((snapShot) => {
-					setCurrentUser({ id: snapShot.id, ...snapShot.data() })
-				})
-			} else setCurrentUser(userAuth)
-		})
-	}, [setCurrentUser])
+  return (
+    <Suspense fallback={<Spinner />}>
+      <Routes>
+        <Route path='/' element={<Navigation />}>
+          <Route index element={<Home />} />
+          <Route path='shop/*' element={<Shop />} />
+          <Route path='auth' element={<Authentication />} />
+          <Route path='checkout' element={<Checkout />} />
+        </Route>
+      </Routes>
+    </Suspense>
+  );
+};
 
-	return (
-		<div>
-			<Header />
-			<Switch>
-				<Route exact path="/" component={Home} />
-				<Route path="/shop" component={Shop} />
-				<Route exact path="/checkout" component={Checkout} />
-				<Route
-					exact
-					path="/signin"
-					render={() =>
-						currentUser ? <Redirect to="/" /> : <SignInAndSignup />
-					}
-				/>
-			</Switch>
-		</div>
-	)
-}
+export default App;
